@@ -1,0 +1,24 @@
+.spangem-wrapper {
+  display: grid;
+  grid-template-areas:
+    "a a a a a a a a"
+    "a a a a a a a a"
+    "b b b b b c c c"
+    "b b b b b c c c"
+    "b b b b b c c c";
+  color:#5a9968;
+  backdrop-filter: blur(10px);
+}
+.spangem-top {
+  grid-area: a;
+}
+.spangem-main {
+  grid-area: b;
+}
+.spangem-side {
+  grid-area: c;
+}
+h1 {
+
+  filter: drop-shadow(4px 2px 5px #489942);
+}
