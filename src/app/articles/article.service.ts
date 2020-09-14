@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Article } from '../article';
-import {ArticleListingModule} from '../article-listing/article-listing.module';
+import { ARTICLE_DB} from './mock-articledb';
+import {Article} from './article';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-  articles: Array<Article>;
-
-  constructor() {
-    this.articles = [
-      new Article(),
-    ];
+  getAll(): Article[] {
+    return ARTICLE_DB;
   }
 }
