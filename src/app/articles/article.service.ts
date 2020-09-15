@@ -7,7 +7,15 @@ import {Article} from './article';
   providedIn: 'root'
 })
 export class ArticleService {
+   articleDb: Article[];
+
+  constructor() {
+    this.articleDb = ARTICLE_DB;
+  }
   getAll(): Article[] {
-    return ARTICLE_DB;
+    return this.articleDb;
+  }
+  getFirst(): Article {
+    return this.articleDb[3];
   }
 }
