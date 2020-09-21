@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Article} from '../article';
 import {ArticleService} from '../article.service';
 
@@ -8,11 +8,14 @@ import {ArticleService} from '../article.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
   articles: Article[];
+  @Output() articleSelectEvent = new EventEmitter<Article>();
 
-  constructor(articleService: ArticleService) {
-    this.articles = articleService.getAll();
+  constructor(private articleService: ArticleService) {
+    this.articles = this.articleService.getAll();
+  }
+  clickHandler(article: Article): any {
+    this.articleSelectEvent.emit(article);
   }
 
   ngOnInit(): void {

@@ -1,0 +1,12 @@
+.no-show-article {
+  text-align: center;
+}
+.show-article {
+
+}
+div {
+  margin:50px 10px;
+  padding: 25px;
+  border-style: inset;
+  border-radius: 5px;
+}

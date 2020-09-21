@@ -8,14 +8,19 @@ import {Article} from './article';
 })
 export class ArticleService {
    articleDb: Article[];
+   article: Article;
 
   constructor() {
     this.articleDb = ARTICLE_DB;
+    this.setArticle(1)
   }
   getAll(): Article[] {
     return this.articleDb;
   }
-  getFirst(): Article {
-    return this.articleDb[3];
+  currentArticle(): Article {
+    return this.article;
+  }
+  setArticle(idx: number): any {
+    this.article = this.articleDb[idx];
   }
 }

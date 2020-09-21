@@ -20,4 +20,6 @@ import { ShowComponent } from './show/show.component';
     ArticlesComponent
   ]
 })
-export class ArticlesModule { }
+export class ArticlesModule {
+
+}
