@@ -12,7 +12,7 @@ export class ArticleService {
 
   constructor() {
     this.articleDb = ARTICLE_DB;
-    this.setArticle(1)
+    this.setArticle(1);
   }
   getAll(): Article[] {
     return this.articleDb;

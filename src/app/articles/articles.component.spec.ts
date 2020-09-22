@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticlesComponent } from './articles.component';
+import {ShowComponent} from './show/show.component';
 
 describe('ArticlesComponent', () => {
   let component: ArticlesComponent;
@@ -19,7 +20,12 @@ describe('ArticlesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it( 'should create an articles page component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('currentArticle should be undefined', () => {
+
+    expect(component.currentArticle).toBeUndefined();
   });
 });
