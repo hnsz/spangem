@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from './article';
+import {DataClientService} from '../data-client.service';
 
 
 
@@ -11,9 +12,11 @@ import {Article} from './article';
 export class ArticlesComponent implements OnInit {
   currentArticle: Article;
 
-  constructor() {}
-  selectArticle(article: Article): void {
-    this.currentArticle = article;
+  constructor(private dataClient: DataClientService) {}
+  selectArticle(articleId): void {
+
+    this.dataClient.getArticle().subscribe((response: Article) => this.currentArticle = { ...response });
+
   }
   ngOnInit(): void {
   }

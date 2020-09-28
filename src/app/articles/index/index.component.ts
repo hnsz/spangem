@@ -9,13 +9,13 @@ import {ArticleService} from '../article.service';
 })
 export class IndexComponent implements OnInit {
   articles: Article[];
-  @Output() articleSelectEvent = new EventEmitter<Article>();
+  @Output() articleSelectEvent = new EventEmitter<any>();
 
   constructor(private articleService: ArticleService) {
     this.articles = this.articleService.getAll();
   }
   clickHandler(article: Article): any {
-    this.articleSelectEvent.emit(article);
+    this.articleSelectEvent.emit(article.id);
   }
 
   ngOnInit(): void {
