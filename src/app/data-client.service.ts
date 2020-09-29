@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Observable, throwError} from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Article } from './articles/article';
@@ -12,7 +12,18 @@ export class DataClientService {
 
   constructor(private http: HttpClient) { }
 
-  getArticle() {
-    return this.http.get<Article>('http://localhost/posts/1/');
+
+  getArticle(articleId: number): Observable<Article> {
+    const urlstring = `http://localhost/posts/${articleId}/`;
+    const options = {
+      headers:  new HttpHeaders({
+        Accept: 'application/json'
+      }),
+      observe: 'body' as const,
+      responseType: 'json' as const
+    };
+
+    return this.http.get<Article>(urlstring, options);
   }
+
 }

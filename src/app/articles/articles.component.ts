@@ -14,9 +14,7 @@ export class ArticlesComponent implements OnInit {
 
   constructor(private dataClient: DataClientService) {}
   selectArticle(articleId): void {
-
-    this.dataClient.getArticle().subscribe((response: Article) => this.currentArticle = { ...response });
-
+    this.dataClient.getArticle(articleId).subscribe((response: Article) => this.currentArticle = { ...response });
   }
   ngOnInit(): void {
   }
