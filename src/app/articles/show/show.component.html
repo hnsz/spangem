@@ -1,6 +1,6 @@
 <div *ngIf="article" class="show-article">
   <h2>{{article.title}}</h2>
-  <p>{{article.body}}</p>
+  <pre>{{article.body}}</pre>
 </div>
 <div *ngIf="article == null" class="no-show-article">
   <p>Nothing to display</p>

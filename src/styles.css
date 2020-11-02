@@ -15,6 +15,22 @@ body {
   padding:12px;
   background-color: #083642;
 }
+.articles-create p {
+  filter: drop-shadow(3px 2px #484042);
+  backdrop-filter: brightness(90%);
+}
+.articles-create {
+  grid-column: 1 / 6 ;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  padding:22px;
+  background-image: revert;
+  background-color: #183032;
+  opacity: 0.8;
+  border-style: inset;
+  border-radius: 5px;
+  color: #a8bfd0;
+}
 .articles-show {
   grid-column: 1 / 6 ;
   grid-row-start: 1;
