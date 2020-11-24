@@ -8,14 +8,13 @@ import {ArticleService} from '../article.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  articles: Article[];
-  @Output() articleSelectEvent = new EventEmitter<any>();
+  
+  @Output() showRequest = new EventEmitter<Article>();
 
   constructor(private articleService: ArticleService) {
-    this.articles = this.articleService.getAll();
   }
   clickHandler(article: Article): any {
-    this.articleSelectEvent.emit(article.id);
+    this.showRequest.emit(article);
   }
 
   ngOnInit(): void {

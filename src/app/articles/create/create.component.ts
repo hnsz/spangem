@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../article.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -9,7 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  @Input() article: Article;
+  @Output() createArticleRequest = new EventEmitter<Article>();
 
   articleForm = new FormGroup({
     title: new FormControl(''),
@@ -17,6 +17,11 @@ export class CreateComponent implements OnInit {
   });
   constructor() { }
 
+  onSubmit() {
+    const controls = this.articleForm.controls;
+    const article: Article =  ({title: controls.title.value,       body: controls.title.value, });
+    this.createArticleRequest.emit(article);
+  }
   ngOnInit(): void {
   }
 
