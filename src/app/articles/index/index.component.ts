@@ -8,13 +8,12 @@ import {ArticleService} from '../article.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  
-  @Output() showRequest = new EventEmitter<Article>();
+  articleList: Article[];
 
   constructor(private articleService: ArticleService) {
+    this.articleList = articleService.getAll();
   }
   clickHandler(article: Article): any {
-    this.showRequest.emit(article);
   }
 
   ngOnInit(): void {

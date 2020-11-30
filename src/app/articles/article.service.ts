@@ -12,6 +12,10 @@ export class ArticleService {
   constructor() {
     this.articleDb = ARTICLE_DB;
   }
+  create(article: Article): void {
+    console.log(article.title);
+    this.articleDb.push(article);
+  }
   getAll(): Article[] {
     return this.articleDb;
   }

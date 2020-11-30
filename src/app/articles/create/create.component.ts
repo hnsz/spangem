@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../article.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, NgControlStatus } from '@angular/forms';
 
 @Component({
   selector: 'app-articles-create',
@@ -9,19 +9,36 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  @Output() createArticleRequest = new EventEmitter<Article>();
 
-  articleForm = new FormGroup({
-    title: new FormControl(''),
-    body: new FormControl('')
-  });
-  constructor() { }
+  articleForm: FormGroup;
 
-  onSubmit() {
-    const controls = this.articleForm.controls;
-    const article: Article =  ({title: controls.title.value,       body: controls.title.value, });
-    this.createArticleRequest.emit(article);
+  constructor(private fbuild: FormBuilder, private articleService: ArticleService) {
+    this.articleForm = this.fbuild.group({
+      title: [''],
+      body: ['']
+    });
   }
+
+  onSubmit(): any {
+    const article = this.getArticle();
+    this.articleService.create(article);
+  }
+  getArticle(): Article {
+    const ctrls = this.articleForm.controls;
+    const article = {
+      id: null,
+      title: ctrls.title.value,
+      body: ctrls.body.value,
+      user_id: null,
+      published_at: null,
+      created_at: null,
+      updated_at: null,
+      deleted_at: null
+    };
+
+    return article;
+  }
+
   ngOnInit(): void {
   }
 
