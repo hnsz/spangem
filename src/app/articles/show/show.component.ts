@@ -8,10 +8,10 @@ import {Article} from '../article';
   styleUrls: ['./show.component.css']
 })
 export class ShowComponent implements OnInit {
-  @Input() article: Article;
+  article: Article;
 
-  constructor() {
-
+  constructor(private articleService: ArticleService) {
+    this.articleService.showArticleRequest.subscribe((response: Article) => this.article = {... response});
   }
 
   ngOnInit(): void {

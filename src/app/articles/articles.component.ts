@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from './article';
 import {DataClientService} from '../data-client.service';
+import { ArticleService } from './article.service';
 
 
 
@@ -12,12 +13,11 @@ import {DataClientService} from '../data-client.service';
 export class ArticlesComponent implements OnInit {
   currentArticle: Article;
 
-  constructor(private dataClient: DataClientService) {}
+  constructor(private articleService: ArticleService) {}
 
 
   showRequestHandler(article: Article): void {
     return;
-    //this.dataClient.getArticle(articleId).subscribe((response: Article) => this.currentArticle = { ...response });
   }
   createRequestHandler(): void {
     return;

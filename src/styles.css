@@ -20,9 +20,9 @@ body {
   backdrop-filter: brightness(90%);
 }
 .articles-create {
-  grid-column: 1 / 6 ;
+  grid-column: 4 / 6 ;
   grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-end: 4;
   padding:22px;
   background-image: revert;
   background-color: #183032;
@@ -32,9 +32,9 @@ body {
   color: #a8bfd0;
 }
 .articles-show {
-  grid-column: 1 / 6 ;
+  grid-column: 1 / 4 ;
   grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-end: 4;
   padding:22px;
   background-image: revert;
   background-color: #183032;

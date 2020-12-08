@@ -11,9 +11,10 @@ export class IndexComponent implements OnInit {
   articleList: Article[];
 
   constructor(private articleService: ArticleService) {
-    this.articleList = articleService.getAll();
+    this.articleList = this.articleService.getAll();
   }
   clickHandler(article: Article): any {
+    this.articleService.show(article);
   }
 
   ngOnInit(): void {

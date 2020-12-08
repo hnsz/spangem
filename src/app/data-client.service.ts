@@ -8,11 +8,35 @@ import { Article } from './articles/article';
   providedIn: 'root'
 })
 export class DataClientService {
+  xsrf: any;
+  domain: string = 'localhost';
+
+  constructor(private http: HttpClient) {
+    const path = '/xsrf';
+    const uri = `http://${this.domain}${path}`;
+    const  promiseXsrf = http.get(uri, {observe: 'body'});
+    promiseXsrf.subscribe((resp) => this.xsrf =  resp);
+    
+
+  }
 
 
-  constructor(private http: HttpClient) { }
+  storeArticle(article: Article): Observable<Article> {
+    const urlstring = `http://localhost/posts/`;
+    const options = {
+      headers:  new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': this.xsrf.token,
+        Accept: 'application/json'
+      }),
+      observe: 'body' as const,
+      responseType: 'json' as const
+    };
+    console.log('POST Article Sent to server.');
+    console.log(this.xsrf.token);
 
-
+    return this.http.post<Article>(urlstring, article, options);
+  }
   getArticle(articleId: number): Observable<Article> {
     const urlstring = `http://localhost/posts/${articleId}/`;
     const options = {
